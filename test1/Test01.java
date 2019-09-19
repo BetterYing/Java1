@@ -10,5 +10,4 @@ public class Test01{
         } 
         return num * print(num - 1);
     }
-
 }
