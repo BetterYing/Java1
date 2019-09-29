@@ -98,6 +98,27 @@ public class LinkedList {
         LinkedNode nodeToRemove = prev.next;
         prev.next = nodeToRemove.next;
     }
+    
+    public void removeAllKey(int toRemove){
+        if(head == null){
+            return;
+        }
+        LinkedNode prev = head;
+        LinkedNode cur = head.next;
+        while(cur != null){
+            if(cur.data == toRemove){
+                prev.next = cur.next;
+                cur = prev.next;
+            } else {
+                prev = cur;
+                cur = cur.next;
+            }
+        }
+        if(this.head.data == toRemove){
+            this.head = this.head.next;
+        }
+        return;
+    }
 
     private LinkedNode searchPrev(int toRemove) {
         if (this.head == null) {
@@ -111,10 +132,7 @@ public class LinkedList {
         prev = prev.next;
     }
     return null;
-}
-
-
-
+  }
 
 
     public void display(){
