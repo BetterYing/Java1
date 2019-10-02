@@ -20,6 +20,27 @@ public class Demon {
         }
         return newHead;
     }
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode prev = head;
+        ListNode node = head.next;
+        while (node != null) {
+            if (node.val == val){
+                prev.next = node.next;
+                node = prev.next;  
+            } else {
+                prev = node;
+                node = node.next;
+            }
+            
+        }
+        if (head.val == val) {
+            head = head.next;
+        }
+        return head;
+    }
 
     public ListNode middleNode(ListNode head){
         int steps = size(head) / 2;
