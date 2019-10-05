@@ -1,15 +1,27 @@
-import java.util.Scanner;
-
+//实现加减乘除四种运算
 public class Calculator {
-    int num1;
-    int num2;
-    Scanner sc = new Scanner(System.in);
-    int ret = add(num1,num2);
+    private double num1;
+    private double num2;
 
-}
-public static int add(int a, int b){
-
-        return  a + b;
+    public double add(double num1,double num2){
+        this.num1 = num1;
+        this.num2 = num2;
+        return this.num1 + this.num2;
+    }
+    public double sub(double num1,double num2){
+        this.num1 = num1;
+        this.num2 = num2;
+        return this.num1 - this.num2;
+    }
+    public double mul(double num1,double num2){
+        this.num1 = num1;
+        this.num2 = num2;
+        return this.num1 * this.num2;
+    }
+    public double div(double num1,double num2){
+        this.num1 = num1;
+        this.num2 = num2;
+        return this.num1 / this.num2;
     }
 }
- 
+
