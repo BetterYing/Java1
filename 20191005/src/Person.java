@@ -3,7 +3,6 @@ public class Person {
     public String sex;
     public int age;
     public boolean isSingle;
-
     public Person(String name, String sex, int age, boolean isSingle) {
         this.name = name;
         this.sex = sex;
