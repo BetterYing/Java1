@@ -3,7 +3,7 @@ public class Test {
         testAddFirst();
         testAddLast();
         testAddIndex();
-        //testContains();
+        testContains();
         testClear();
         testRemove();
         testRemoveAll();
@@ -43,18 +43,18 @@ public class Test {
         node.display();
     }
 
-//    public static boolean testContains(){
-//        System.out.println("测试包含：");
-//        DLinkedList node = new DLinkedList();
-//        node.addFirst(1);
-//        node.addFirst(2);
-//        node.addFirst(3);
-//        node.addFirst(4);
-//        node.addFirst(5);
-//        node.contains(2);
-//        //node.display();
-//
-//    }
+    public static boolean testContains(){
+        System.out.println("测试包含：");
+        DLinkedList node = new DLinkedList();
+        node.addFirst(1);
+        node.addFirst(2);
+        node.addFirst(3);
+        node.addFirst(4);
+        node.addFirst(5);
+        boolean value = node.contains(6);
+        System.out.println(value);
+        return false;
+    }
 
     public static void testClear(){
         System.out.println("测试清除");
