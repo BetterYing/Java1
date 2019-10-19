@@ -3,12 +3,6 @@ public class Demon {
         String name = "zhangsan";
         System.out.println(name);
 
-
-
-
-
-
-
     }
 
     public static void main2(String[] args){
