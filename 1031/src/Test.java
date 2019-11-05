@@ -14,7 +14,6 @@ public class Test {
         };
         int[] tmp = findVal(arr,4,4,23);
         System.out.println(tmp[0] + " " + tmp[1]);
-
     }
 
     public static int func(int n) {
@@ -42,7 +41,6 @@ public class Test {
         }
         return -1;
     }
-
 
     public static int[] findVal(int[][] array,int row,int col,int num) {
         int i = 0;
