@@ -2,7 +2,7 @@ class Node {
     char val; // 数据域
     Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
     Node right; // 右孩子的引用，常常代表右孩子为根的整棵右子树
-    public Node(char value) {
+    public Node(char val) {
         this.val = val;
     }
 
