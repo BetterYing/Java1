@@ -1,5 +1,5 @@
 import java.util.*;
-
+//最近公共祖先
 class Node {
     int val;
     Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
@@ -41,6 +41,7 @@ public class Main{
 
         return head;
     }
+
     public static Node prev = null;
     public static void ConvertChild (Node root) {
         if (root == null) {
