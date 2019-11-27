@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44f0668c-1772-4b98-889f-52c415c5ba6b" name="Default Changelist" comment="" />
+    <list default="true" id="44f0668c-1772-4b98-889f-52c415c5ba6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/1115/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1115/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1115/TestHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1115/TestHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestHeap.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,9 +57,20 @@
     <session id="1002566755">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="114" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="114" />
         </counts>
       </usages-collector>
     </session>
@@ -64,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            <state relative-caret-position="270">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -73,9 +89,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestHeap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2400">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="452">
+              <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
               <folding>
+                <element signature="e#1704#1705#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
                 <element signature="e#2107#2108#0" expanded="true" />
                 <element signature="e#2148#2149#0" expanded="true" />
               </folding>
@@ -110,8 +128,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="792" />
-    <option name="y" value="51" />
+    <option name="x" value="781" />
+    <option name="y" value="18" />
     <option name="width" value="1137" />
     <option name="height" value="984" />
   </component>
@@ -170,15 +188,15 @@
       <workItem from="1574676921235" duration="9662000" />
       <workItem from="1574729946671" duration="3559000" />
       <workItem from="1574816860859" duration="76000" />
+      <workItem from="1574852618651" duration="1790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13324000" />
+    <option name="totallyTimeSpent" value="15114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25383994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -189,7 +207,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47602132" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.47153026" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -219,16 +237,18 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state relative-caret-position="270">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestHeap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2400">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="452">
+          <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
           <folding>
+            <element signature="e#1704#1705#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
             <element signature="e#2107#2108#0" expanded="true" />
             <element signature="e#2148#2149#0" expanded="true" />
           </folding>

@@ -36,7 +36,7 @@ public class TestHeap {
             this.usedSize++;
         }
         for (int i = (this.usedSize - 1 - 1) / 2; i >= 0; i--) {
-            adjustDown(i,this.usedSize - 1);
+            adjustDown(i,this.usedSize);
         }
     }
     public void display() {
@@ -61,19 +61,14 @@ public class TestHeap {
         }
     }
 
-
     public boolean isFull() {
-        if (this.usedSize == this.elem.length) {
-            return true;
-        }
-        return false;
+        return this.usedSize == this.elem.length;
     }
 
-    public void pushHeap(int val) {
+    public void  pushHeap(int val) {
         if (isFull()) {
             this.elem = Arrays.copyOf(this.elem,this.elem.length * 2);
         }
-
         this.elem[this.usedSize] = val;
         this.usedSize++;//11
         adjustUp(this.usedSize - 1);
@@ -88,7 +83,14 @@ public class TestHeap {
         }
         swap(this.usedSize - 1,0);
         this.usedSize--;
-        adjustDown(0,this.usedSize -1 );
+        adjustDown(0,this.usedSize);
+    }
+
+    public int getPop() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return this.elem[0];
     }
 
     //堆排序

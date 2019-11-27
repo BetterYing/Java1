@@ -5,13 +5,15 @@ public class Test {
         testHeap.createHeap(array);
         testHeap.display();
 
+
         testHeap.pushHeap(14);
-        testHeap.display();
-
-        testHeap.popHeap();
-        testHeap.display();
-
         testHeap.heapSort();
         testHeap.display();
+
+//        testHeap.popHeap();
+//        testHeap.display();
+//
+//        testHeap.heapSort();
+//        testHeap.display();
     }
 }
