@@ -16,11 +16,11 @@ public class Test {
 //        System.out.println(Arrays.toString(arr));
 
         int[] arr = {5,9,12,6,8,34,33,56,89,0,4,7,22,55,77};
-        mergeSort(arr,0,arr.length - 1);
+        selectSort(arr);
         System.out.println(Arrays.toString(arr));
 
-        mergeSort1(arr);
-        System.out.println(Arrays.toString(arr));
+//        mergeSort1(arr);
+//        System.out.println(Arrays.toString(arr));
 
     }
 
@@ -44,6 +44,21 @@ public class Test {
         }
     }
 
+    public static void insert(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int tmp = arr[i];
+            int j;
+            for (j = i - 1; j < arr.length; j--) {
+                if (arr[j] < tmp) {
+                    arr[j + 1] = arr[j];
+                } else {
+                    break;
+                }
+            }
+            arr[j + 1] = tmp;
+        }
+    }
+
     //希尔排序
     public static void shell(int[] arr,int gap) {
         int tmp;
@@ -60,6 +75,22 @@ public class Test {
             }
             arr[j + gap] = tmp;
         }
+    }
+    public static void shel(int[] arr,int gap) {
+        for (int i = gap; i < arr.length; i++) {
+            int tmp = arr[i];
+            int j;
+            for (j = i - gap; j < arr.length; j = j - gap) {
+                if (arr[j] > tmp) {
+                    arr[j + gap] = arr[j];
+                } else {
+                    break;
+                }
+            }
+            arr[j + gap] = tmp;
+        }
+
+
     }
     public static void shellSort(int[] arr) {
         int[] drr = {5,3,1};
@@ -81,7 +112,17 @@ public class Test {
         }
     }
 
-
+    public static void select(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
 
 
     //快速排序
@@ -109,14 +150,36 @@ public class Test {
         return low;
     }
 
+    public static int partion(int[] arr,int low,int high) {
+        int tmp = arr[low];
+        while (low < high) {
+            while (low < high && arr[high] >= tmp) {
+                high--;
+            }
+            if (low < high) {
+                arr[low] = arr[high];
+            } else {
+                break;
+            }
+            while (low < high && arr[low] <= tmp) {
+                low++;
+            }
+            if (low < high) {
+                arr[high] = arr[low];
+            } else {
+                break;
+            }
+        }
+        arr[low] = tmp;
+        return tmp;
+    }
+
     public static void quick (int[] arr,int low,int high) {
         if (high - low + 1 <= 100) {
             insert(arr,low,high);
             return;
         }
         threeNumMid(arr,low,high);
-
-
         int par = partition(arr,low,high);
         if (par > low + 1) {
             quick(arr,low,par - 1);
@@ -128,8 +191,6 @@ public class Test {
     public static void quickSort1(int[] arr) {
         quick(arr,0,arr.length - 1);
     }
-
-
     public static void swap(int[] arr,int low,int high) {
         int tmp = arr[low];
         arr[low] = arr[high];
@@ -147,6 +208,9 @@ public class Test {
             swap(arr,low,high);
         }
     }
+
+
+    //插入排序
     public static void insert(int[] arr,int low,int high) {
         for (int i = low + 1; i < high; i++) {
             int tmp = arr[i];
@@ -269,4 +333,76 @@ public class Test {
         }
     }
 
+    //冒泡排序
+    public static  void bubbleSort(int[] array) {
+        boolean flg = false;
+        //i->趟数
+        for (int i = 0; i < array.length-1; i++) {
+            flg = false;
+            //j->下标
+            for (int j = 0; j < array.length-1-i; j++) {
+                if(array[j] > array[j+1]) {
+                    int tmp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
+                    flg = true;
+                }
+            }
+            if(!flg) {
+                break;
+            }
+        }
+    }
+
+    public static void bubble(int[] arr) {
+        boolean flag = false;
+        //趟数
+        for (int i = 0; i < arr.length - 1; i++) {
+            flag = false;
+            //次数
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr,j,j+1);
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                break;
+            }
+        }
+    }
+
+    //堆排
+    public static void adjustDown(int[] arr,int root,int len) {
+        int parent = root;
+        int child = 2 * parent + 1;
+        while (child < len) {
+            //判断是否有右孩子 且谁最大
+            if(child + 1 < len && arr[child] < arr[child + 1]) {
+                child = child + 1;
+            }
+            //child肯定是左右孩子的最大值下标
+            if(arr[child] > arr[parent]) {
+                swap(arr,child,parent);
+                parent = child;
+                child = 2 * parent + 1;
+            }else {
+                break;
+            }
+        }
+    }
+    public static void heapSort(int[] array) {
+        for (int i = (array.length - 1 - 1) / 2; i >= 0; i--) {
+            adjustDown(array,i,array.length);
+        }
+        //每次调整的结束位置  9
+        int end = array.length-1;
+        while (end > 0) {
+            int tmp = array[0];
+            array[0] = array[end];
+            array[end] = tmp;
+            adjustDown(array,0,end);
+            end--;
+        }
+    }
 }
