@@ -114,7 +114,7 @@ public class BinarySearchTree {
             }
             //cur为右树中最小的元素
             cur.val = target.val;
-            if (target == targetParent) {
+            if (target == targetParent.left) {
                 targetParent.left = target.right;
             } else {
                 targetParent.right = target.right;
