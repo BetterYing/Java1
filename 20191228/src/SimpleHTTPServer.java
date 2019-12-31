@@ -22,8 +22,6 @@ public class SimpleHTTPServer {
             Socket socket = serverSocket.accept();
             pool.execute(new Task(socket));
         }
-
-
     }
 
     private static void registerUsers() {
