@@ -32,7 +32,6 @@ public class LinkedList {
       return newHead;
     }
 
-
     public LinkedNode reverseT(LinkedNode head) {
         if (head == null) {
             return null;
@@ -54,8 +53,6 @@ public class LinkedList {
         }
         return newHead;
     }
-
-
 
     //2.合并两个有序链表
     public LinkedNode merge(LinkedNode headA,LinkedNode headB) {
