@@ -37,7 +37,7 @@ public class DBUtil {
                     //mysql日期格式：yyyy-MM-dd HH:mm:ss
                     //sqlite日期格式：yyyy-MM-dd HH:mm:ss:SSS
                     SQLiteConfig config = new SQLiteConfig();
-                    config.setDateStringFormat(Util.DATA_PATTERN_);
+                    config.setDateStringFormat(Util.DATA_PATTERN);
 
                     DATA_SOURCE = new SQLiteDataSource();
                     ((SQLiteDataSource) DATA_SOURCE).setUrl(getUrl());
