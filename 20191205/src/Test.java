@@ -9,6 +9,5 @@ public class Test {
 
         int ret = hashBuck.get(21);
         System.out.println(ret);
-
     }
 }
