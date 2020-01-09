@@ -13,41 +13,42 @@ public class Main2 {
             for (int i = 0; i < score.length; i++) {
                 score[i] = sc.nextInt();
             }
-            double ret = fun(score);
-            int sum = 0;
-            for (int i = 0; i < array.length; i++) {
-                sum += array[i];
-            }
-            System.out.printf("%.2f",ret / sum);
+            double ret = gpa(array,score);
+            System.out.printf("%.2f",ret);
         }
 
     }
 
-    private static double fun (int[] array) {
-        double sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 90) {
-                sum += 4.0;
-            } else if (array[i] < 90 && array[i] >= 85) {
-                sum += 3.7;
-            } else if (array[i] < 85 && array[i] >= 82) {
-                sum += 3.3;
-            } else if (array[i] < 82 && array[i] >= 78) {
-                sum += 3.0;
-            } else if (array[i] < 78 && array[i] >= 75) {
-                sum += 2.7;
-            } else if (array[i] < 75 && array[i] >= 72) {
-                sum += 2.3;
-            } else if (array[i] < 72 && array[i] >= 68) {
-                sum += 2.0;
-            } else if (array[i] < 68 && array[i] >= 64) {
-                sum += 1.5;
-            }else if (array[i] < 64 && array[i] >= 60) {
-                sum += 1.0;
-            }else {
-                sum += 0;
-            }
+    private static double fun (int score) {
+        if (score >= 90) {
+            return 4.0;
+        } else if (score < 90 && score >= 85) {
+            return 3.7;
+        } else if (score < 85 && score >= 82) {
+            return 3.3;
+        } else if (score < 82 && score >= 78) {
+            return 3.0;
+        } else if (score < 78 && score >= 75) {
+            return  2.7;
+        } else if (score < 75 && score >= 72) {
+            return  2.3;
+        } else if (score < 72 && score >= 68) {
+            return  2.0;
+        } else if (score < 68 && score >= 64) {
+            return  1.5;
+        } else if (score < 64 && score >= 60) {
+            return  1.0;
+        } else {
+            return 0;
         }
-        return sum;
+    }
+    private static double gpa(int array[],int[] scores) {
+        double sum = 0;
+        int sumPower = 0;
+        for (int i = 0; i < array.length; i++) {
+            sumPower += array[i];
+            sum += array[i] * fun(scores[i]);
+        }
+        return sum / sumPower;
     }
 }
