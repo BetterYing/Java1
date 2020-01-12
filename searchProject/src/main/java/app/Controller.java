@@ -1,6 +1,8 @@
 package app;
 
 import dao.FileOperateDAO;
+import task.DBInit;
+import task.FileOperateTask;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -18,8 +20,6 @@ import task.FileScanTask;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,12 +36,16 @@ public class Controller implements Initializable {
     @FXML
     private Label srcDirectory;
 
+
+
     Thread t = null;
     public void initialize(URL location, ResourceBundle resources) {
+        DBInit.init();
         // 添加搜索框监听器，内容改变时执行监听事件
         searchField.textProperty().addListener(new ChangeListener<String>() {
 
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
                 freshTable();
             }
         });
@@ -64,12 +68,16 @@ public class Controller implements Initializable {
         t = new Thread(new Runnable() {
             @Override
             public void run() {
-                FileScanCallBack callBack = new FileOperateDAO();
-                FileScanTask task = new FileScanTask(callBack);
-                task.startScan(file);
-                task.waitFinish();
-                System.out.println("执行完毕");
-                freshTable();
+                try {
+                    FileScanCallBack callBack = new FileOperateTask();
+                    FileScanTask task = new FileScanTask(callBack);
+                    task.startScan(file);
+                    task.waitFinish();
+                    System.out.println("执行完毕");
+                    freshTable();
+                } catch (InterruptedException e ){
+                    e.printStackTrace();
+                }
             }
         });
         t.start();
@@ -80,13 +88,8 @@ public class Controller implements Initializable {
         System.out.println("===============================");
         ObservableList<FileMeta> metas = fileTable.getItems();
         metas.clear();
-        // TODO
-        List<FileMeta> datas = new ArrayList<>();
-        datas.add(new FileMeta("A","d:/",23883L,new Date().getTime(),true));
-        datas.add(new FileMeta("B","e:/",45683L,new Date().getTime(),true));
-        datas.add(new FileMeta("C","f:/",673L,new Date().getTime(),true));
-        datas.add(new FileMeta("D","c:/",2388903L,new Date().getTime(),true));
 
+        List<FileMeta> datas = FileOperateDAO.search(srcDirectory.getText(),searchField.getText());
         metas.addAll(datas);
     }
 }

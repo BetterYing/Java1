@@ -6,8 +6,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class Pinyin4jUtil {
     private static final  String CHINESE_PATTREN = "[\\u4E00-\\u9FA5]";

@@ -8,12 +8,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FileScanTask {
 
-    private static final ExecutorService POLL = Executors.newFixedThreadPool(4);
+    private final ExecutorService poll = Executors.newFixedThreadPool(4);
 
     //private static volatile int COUNT;
-    private static final AtomicInteger COUNT = new AtomicInteger();
+    private final AtomicInteger count = new AtomicInteger();
 
-    private static final CountDownLatch LATCH = new CountDownLatch(1);
+    private final CountDownLatch latch = new CountDownLatch(1);
 
     private FileScanCallBack callBack;
 
@@ -29,9 +29,9 @@ public class FileScanTask {
 //        synchronized (this) {
 //            COUNT++;
 //        }
-        COUNT.incrementAndGet();
+        count.incrementAndGet();
 
-        POLL.execute(new Runnable() {
+        poll.execute(new Runnable() {
             @Override
             public void run() {
                 list(root);
@@ -39,7 +39,7 @@ public class FileScanTask {
         });
     }
 
-    public void waitFinish() {
+    public void waitFinish() throws InterruptedException {
 //        try {
 ////            synchronized (this) {
 ////                this.wait();
@@ -49,11 +49,11 @@ public class FileScanTask {
 ////        }
         //等待
         try {
-            LATCH.await();
-        } catch (InterruptedException e) {
+            latch.await();
+        }finally {
             //中断所有线程
-            POLL.shutdown(); //调用每个线程的interrupt()中断
-            //POLL.shutdownNow();//调用每个线程的stop()关闭
+            poll.shutdown(); //调用每个线程的interrupt()中断
+            // POLL.shutdownNow();//调用每个线程的stop()关闭
         }
     }
 
@@ -71,8 +71,8 @@ public class FileScanTask {
 //                            synchronized (this) {
 //                                COUNT++;
 //                            }
-                                COUNT.incrementAndGet();
-                                POLL.execute(new Runnable() {
+                                count.incrementAndGet();
+                                poll.execute(new Runnable() {
                                     @Override
                                     public void run() {
                                         list(child);
@@ -93,9 +93,9 @@ public class FileScanTask {
 //                }
 //            }
                 //所有线程执行完毕
-                if (COUNT.decrementAndGet() == 0) {
+                if (count.decrementAndGet() == 0) {
                     //通知
-                    LATCH.countDown();
+                    latch.countDown();
                 }
             }
         }
