@@ -31,7 +31,6 @@ public class Sort {
             }
             array[j + gap] = tmp;
         }
-
     }
     public static void shellSort(int[] array) {
         int[] a = {5,3,1};
@@ -118,7 +117,6 @@ public class Sort {
             } else {
                 break;
             }
-
             while (low < high && arr[low] < tmp) {
                 low++;
             }
@@ -222,7 +220,6 @@ public class Sort {
             merge1(array,gap);
         }
     }
-
 
     public static void main(String[] args){
         int[] arr = {1,5,8,9,34,2,12,23,25,18,11,15,28,39,30};
