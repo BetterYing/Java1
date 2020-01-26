@@ -5,7 +5,6 @@ public class Test {
         testHeap.createHeap(array);
         testHeap.display();
 
-
         testHeap.pushHeap(14);
         testHeap.heapSort();
         testHeap.display();
