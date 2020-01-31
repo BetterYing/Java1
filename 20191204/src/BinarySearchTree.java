@@ -46,8 +46,6 @@ public class BinarySearchTree {
     }
 
 
-
-
     public Node search (int key) {
         if (root.val == key) {
             return root;
@@ -121,5 +119,4 @@ public class BinarySearchTree {
             }
         }
     }
-
 }
