@@ -11,7 +11,6 @@ public class MyThread {
         t.start();
         Thread t1 = new Thread(new MyRunnable());
         t1.start();
-
     }
 
     static class MyRunnable implements Runnable {
@@ -57,7 +56,4 @@ public class MyThread {
         Thread t4 = new Thread(new MyRunnable(),"这是我的名字");
         t4.start();
     }
-
-
-
 }
