@@ -13,9 +13,9 @@ public class Test {
                     e.printStackTrace();
                 }
             }
-
         }
     }
+
     public static void main(String[] args) throws InterruptedException {
         MyThread t1 = new MyThread();
         MyThread t2 = new MyThread();
