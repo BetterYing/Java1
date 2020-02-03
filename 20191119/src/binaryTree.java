@@ -128,5 +128,4 @@ public class binaryTree {
         }
         return isSymmetricChild(root.left,root.right);
     }
-
 }

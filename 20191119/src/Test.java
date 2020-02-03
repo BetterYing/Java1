@@ -10,7 +10,6 @@ public class Test {
         }
     }
 
-
     public static int func(String str1,String str2) {
         if(str1.contains(str2) || str2.contains(str1)) {
             return 1;
