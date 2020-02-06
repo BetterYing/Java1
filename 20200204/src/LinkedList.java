@@ -117,7 +117,27 @@ public class LinkedList {
             slow = slow.next;
         }
 
-        return false;
+        Node p = slow.next;
+        while (p != null) {
+            Node pNext = p.next;
+            p.next = slow;
+            slow = p;
+            p = pNext;
+            if (p != null) {
+                pNext = p.next;
+            }
+        }
+        while (head != slow) {
+            if (head.data != slow.data) {
+                return false;
+            }
+            if (head.next == slow) {
+                return true;
+            }
+            head = head.next;
+            slow = slow.next;
+        }
+        return true;
     }
 
     //链表的中间节点
