@@ -9,6 +9,37 @@ class Node {
 public class LinkedList {
     public Node head;
 
+    //尾插
+    public void addLast (int elem) {
+        Node node = new Node(elem);
+        Node tail = head;
+        if (head == null) {
+            head = node;
+            return;
+        }
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        tail.next = node;
+    }
+
+    //打印
+    public void display() {
+        // 打印链表中的所有元素
+        System.out.print("[");
+        for (Node node = this.head;
+             node != null; node = node.next) {
+            System.out.print(node.data);
+            if (node.next != null) {
+                // 如果不是最后一个元素就加上 , 否则不加
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+
+
     //合并两个单链表
     public Node merge (Node h1,Node h2) {
         Node newHead = new Node(-1);
