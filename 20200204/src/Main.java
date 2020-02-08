@@ -6,7 +6,5 @@ public class Main {
         linkedList.addLast(3);
         linkedList.addLast(4);
         linkedList.display();
-
-
     }
 }
