@@ -10,7 +10,50 @@
     <script src = "js/jquery-1.7.2.min.js"> </script>
     <!--js代码 要被执行 需要导入上面的库-->
     <script>
-    
+        $(function () {
+            $.ajax({
+                url:"browseGoods",
+                type:"get",
+                dataType:"json",
+                //后台执行成功之后，执行此函数
+                success:function (data) {
+                    console.log(data);
+                    /*console.log(data.length);*/
+                    var s = "";
+                    for(var i = 0;i < data.length;i++) {
+                        s += "<tr>";
+                        s += "<td>" + data[i].id + "</td>";
+                        s += "<td>" + data[i].name + "</td>";
+                        s += "<td>" + data[i].introduce + "</td>";
+                        s += "<td>" + data[i]["stock"] + "</td>";
+                        s += "<td>" + data[i].unit + "</td>";
+                        s += "<td>" + data[i].price + "</td>";
+                        s += "<td>" + data[i].discount + "</td>";
+                        s+="<td class=\"delete\">" +
+                            "<button onclick= \"deleteInfo('"+data[i].id+"')\" >" +
+                            "<i class=\"icon-trash bigger-120\"></i>下架</button></td>";
+                        s+="</tr>";
+                    }
+                    $("#tbRecord>tbody").html(s);
+                }
+            })
+        });
+
+        function deleteInfo(obj) {
+            console.log(obj);
+            $.ajax({
+                url:"delGoods",
+                type:"post",
+                data:{"id" : obj},//传给servlet的数据
+                success:function () {
+                    alert("删除成功");
+                    window.location.reload();
+                },
+                error:function () {
+                    alert("删除失败");
+                }
+            })
+        }
     </script>
 
 </head>
@@ -45,26 +88,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 肉肉 </td>
-                                        <td> 猪猪 </td>
-                                        <td> 2 </td>
-                                        <td> 斤 </td>
-                                        <td> 10 </td>
-                                        <td> 80折 </td>
-                                        <td> 下架 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 2 </td>
-                                        <td> 肉肉 </td>
-                                        <td> 兔兔 </td>
-                                        <td> 3 </td>
-                                        <td> 斤 </td>
-                                        <td> 56 </td>
-                                        <td> 99折 </td>
-                                        <td> 下架 </td>
-                                    </tr>
+
                                 </tbody>
 
                             </table>
