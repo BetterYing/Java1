@@ -25,14 +25,15 @@
                         s += "<td>" + data[i].id + "</td>";
                         s += "<td>" + data[i].name + "</td>";
                         s += "<td>" + data[i].introduce + "</td>";
-                        s += "<td>" + data[i]["stock"] + "</td>";
+                        s += "<td>" + data[i].stock + "</td>";
+                        // s += "<td>" + data[i]["stock"] + "</td>"; //也可以这样写
                         s += "<td>" + data[i].unit + "</td>";
                         s += "<td>" + data[i].price + "</td>";
                         s += "<td>" + data[i].discount + "</td>";
-                        s+="<td class=\"delete\">" +
-                            "<button onclick= \"deleteInfo('"+data[i].id+"')\" >" +
-                            "<i class=\"icon-trash bigger-120\"></i>下架</button></td>";
-                        s+="</tr>";
+                        s += "<td class=\"delete\">" +
+                             "<button onclick= \"deleteInfo('"+data[i].id+"')\" >" +
+                             "<i class=\"icon-trash bigger-120\"></i>下架</button></td>";
+                        s += "</tr>";
                     }
                     $("#tbRecord>tbody").html(s);
                 }

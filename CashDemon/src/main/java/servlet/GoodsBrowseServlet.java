@@ -1,10 +1,12 @@
+/**
+ * 浏览商品
+ */
 package servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Goods;
 import util.DBUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +24,7 @@ import java.util.List;
 @WebServlet("/browseGoods")
 public class GoodsBrowseServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset = UTF-8");
         resp.setCharacterEncoding("UTF-8");
@@ -49,10 +51,11 @@ public class GoodsBrowseServlet extends HttpServlet {
             }
             //System.out.println("list " + list);
 
-            ObjectMapper mapper = new ObjectMapper();
+            //将list转为json，然后发给前端 进行解析
+            ObjectMapper mapper = new ObjectMapper();//ObjectMapper方便将模型对象转换为json
 
             PrintWriter pw = resp.getWriter();//将响应包推给浏览器
-            mapper.writeValue(pw,list);//将list转换为字符串，并将json字符串填充到PrintWriter当中
+            mapper.writeValue(pw,list);//将list转换为json字符串，并将json字符串填充到PrintWriter流当中
 
             Writer writer = resp.getWriter();
 
@@ -64,6 +67,7 @@ public class GoodsBrowseServlet extends HttpServlet {
             DBUtil.close(connection ,preparedStatement,resultSet);
         }
     }
+
     public Goods extractGoods (ResultSet resultSet) throws SQLException {
         Goods goods = new Goods();
         goods.setId(resultSet.getInt("id"));

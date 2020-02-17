@@ -1,8 +1,10 @@
+/**
+ * 商品下架
+ */
 package servlet;
 
 import util.DBUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ import java.sql.SQLException;
 @WebServlet("/delGoods")
 public class DelGoodsServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset = UTF-8");
         resp.setCharacterEncoding("UTF-8");
@@ -38,7 +40,6 @@ public class DelGoodsServlet extends HttpServlet {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,goodsIdInt);
             return preparedStatement.executeUpdate() == 1;
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

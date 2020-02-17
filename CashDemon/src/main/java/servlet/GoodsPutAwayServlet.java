@@ -1,3 +1,6 @@
+/**
+ * 商品上架
+ */
 package servlet;
 
 import util.DBUtil;
@@ -21,10 +24,17 @@ public class GoodsPutAwayServlet extends HttpServlet {
         String introduce = req.getParameter("introduce");
         String stock = req.getParameter("stock");
         String unit = req.getParameter("unit");
-        String price = req.getParameter("price");//"12.34"
-        double doublePrice = Double.valueOf(price);//12.34
-        int realPrice = new Double(doublePrice * 100).intValue();//1234
+        String price = req.getParameter("price");
+        double doublePrice = Double.valueOf(price);
+        int real = new Double(doublePrice * 100).intValue();
         String discount = req.getParameter("discount");
+
+//        System.out.println("name + " + name);
+//        System.out.println("introduce + " + introduce);
+//        System.out.println("stock + " + stock);
+//        System.out.println("unit + " + unit);
+//        System.out.println("price + " + real);
+//        System.out.println("discount + " + discount);
 
 
         Connection connection = null;
@@ -38,18 +48,16 @@ public class GoodsPutAwayServlet extends HttpServlet {
 
             preparedStatement.setString(1,name);
             preparedStatement.setString(2,introduce);
-            preparedStatement.setInt(3,Integer.parseInt(stock));
+            preparedStatement.setInt(3,Integer.valueOf(stock));
             preparedStatement.setString(4,unit);
-            preparedStatement.setInt(5,realPrice);
-            preparedStatement.setInt(6,Integer.parseInt(discount));
+            preparedStatement.setInt(5,real);
+            preparedStatement.setInt(6,Integer.valueOf(discount));
 
             int ret = preparedStatement.executeUpdate();
 
-            //跳转到登录界面
             if (ret == 1) {
-                resp.sendRedirect("index.html");//暂且
+                resp.sendRedirect("index.html");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

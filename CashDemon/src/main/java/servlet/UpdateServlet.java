@@ -1,3 +1,6 @@
+/**
+ * 更新商品
+ */
 package servlet;
 
 import entity.Goods;
@@ -56,7 +59,6 @@ public class UpdateServlet extends HttpServlet {
                 resp.sendRedirect("index.html");
             }
         }
-
     }
 
     private boolean modifyGoods(Goods goods) {
@@ -76,7 +78,7 @@ public class UpdateServlet extends HttpServlet {
             preparedStatement.setInt(6,goods.getDiscount());
             preparedStatement.setInt(7,goods.getId());
 
-            effect = (preparedStatement.executeUpdate()==1);
+            effect = (preparedStatement.executeUpdate() == 1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -95,12 +97,8 @@ public class UpdateServlet extends HttpServlet {
             String sql = "select *from goods where id=?";
             connection = DBUtil.getConnection(true);
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
             preparedStatement.setInt(1,goodId);
-
             resultSet = preparedStatement.executeQuery();
-
-
             if(resultSet.next()) {
                 goods = this.extractGoods(resultSet);
             }

@@ -1,3 +1,6 @@
+/**
+ * 注册
+ */
 package servlet;
 
 import util.DBUtil;

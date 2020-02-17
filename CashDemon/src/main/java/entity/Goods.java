@@ -15,6 +15,7 @@ public class Goods {
         return buyGoodsNum;
     }
 
+
     public void setBuyGoodsNum(Integer buyGoodsNum) {
         this.buyGoodsNum = buyGoodsNum;
     }
@@ -59,7 +60,8 @@ public class Goods {
         this.unit = unit;
     }
 
-    private double getPrice() {
+
+    public double getPrice() {
         return price * 1.0 /100;
     }
     public int getPriceInt() {
