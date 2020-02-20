@@ -53,4 +53,29 @@ public class Tree {
             }
         }
     }
+
+    private void rightRotate (Node parent) {
+        //parent一点不为null(因为parent.bf = -2 或者 2 才右旋)
+        //cur 一定不为null，因为cur的高度比parent.right高
+        Node cur = parent.left;
+        Node rightOfCur = cur.right;
+        Node grandpa = parent.parent;
+
+        parent.parent = cur;
+        parent.left = rightOfCur;
+
+        cur.parent = grandpa;
+        cur.right = parent;
+
+        if (grandpa != null) {
+            if (grandpa == grandpa.left) {
+                grandpa.left = cur;
+            } else {
+                grandpa.right = cur;
+            }
+        }
+        if (rightOfCur != null) {
+            rightOfCur.parent = parent;
+        }
+    }
 }
