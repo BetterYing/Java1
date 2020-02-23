@@ -14,6 +14,7 @@ public class Main {
         }
         Arrays.sort(ret);
 
+
         for (int i = 0; i < num; i++) {
             System.out.print(ret[i] + " ");
         }
