@@ -16,8 +16,5 @@ public class Main {
         int ret1 = maxDepth(root.right);
         return ret > ret1 ? ret + 1 : ret1 + 1;
     }
-    
-
-
 
 }
