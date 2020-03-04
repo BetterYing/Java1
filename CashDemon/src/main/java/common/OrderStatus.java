@@ -9,13 +9,29 @@ public enum OrderStatus {
         this.desc = desc;
     }
 
+    //OrderStatus.values()将枚举里面的值变为数组
     public static OrderStatus valueOf (int flag) {
         for (OrderStatus orderStatus : OrderStatus.values()) {
             if (orderStatus.flag == flag) {
                 return orderStatus;
             }
         }
-        throw new  RuntimeException("OrderStatus is not ");
+        throw new RuntimeException("OrderStatus is not found");
     }
 
+    public int getFlag() {
+        return flag;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderStatus{" +
+                "flag=" + flag +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

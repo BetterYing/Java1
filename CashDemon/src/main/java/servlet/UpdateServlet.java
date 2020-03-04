@@ -93,7 +93,7 @@ public class UpdateServlet extends HttpServlet {
         ResultSet resultSet = null;
         Goods goods = null;
         try {
-            String sql = "select *from goods where id=?";
+            String sql = "select * from goods where id=?";
             connection = DBUtil.getConnection(true);
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1,goodId);

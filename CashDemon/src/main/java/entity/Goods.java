@@ -82,4 +82,19 @@ public class Goods {
     public void setDiscount(Integer discount) {
         this.discount = discount;
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "Goods{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", introduce='" + introduce + '\'' +
+//                ", stock=" + stock +
+//                ", unit='" + unit + '\'' +
+//                ", price=" + price +
+//                ", discount=" + discount +
+//                ", buyGoodsNum=" + buyGoodsNum +
+//                '}';
+//    }
 }

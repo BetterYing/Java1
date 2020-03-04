@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
                 writer.write("<h2> 用户名或者密码错误 : " + username + "</h2>");
             } else {
                 HttpSession session = req.getSession();
-                session.setAttribute("user",account);
+                session.setAttribute("user",account);//当前登录账户记录到session中，取得时候只需取id为user的用户
                 resp.sendRedirect("index.html");
             }
         } catch (SQLException e) {

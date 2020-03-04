@@ -85,9 +85,9 @@ public class OrderItem {
     }
 
     public double getGoods_Price(){
-        return goods_price*1.0/100;
+        return goods_price * 1.0 / 100;//单位：元
     }
     public int getIntoods_Price(){
-        return goods_price;
+        return goods_price;//单位：分
     }
 }
