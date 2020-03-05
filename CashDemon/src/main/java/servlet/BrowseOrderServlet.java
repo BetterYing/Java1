@@ -1,3 +1,4 @@
+//浏览订单
 package servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +8,7 @@ import entity.Order;
 import entity.OrderItem;
 import util.DBUtil;
 
-import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +21,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@WebServlet("/browseOrder")
 public class BrowseOrderServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset = UTF-8");
         resp.setCharacterEncoding("UTF-8");
@@ -37,7 +38,6 @@ public class BrowseOrderServlet extends HttpServlet {
         if (list == null) {
             //判断查询结果，如果是空，说明没有订单
             System.out.println("订单链表为空");
-
         } else {
             //如果不为空，那么将list转为json，发送给前端
             ObjectMapper mapper = new ObjectMapper();
@@ -48,7 +48,7 @@ public class BrowseOrderServlet extends HttpServlet {
         }
     }
 
-    private List<Order> queryOrder(Integer accountId) {
+    private List<Order> queryOrder(int accountId) {
         List<Order> list = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -57,19 +57,32 @@ public class BrowseOrderServlet extends HttpServlet {
             String sql = this.getSql("@query_Order_by_account");
             connection = DBUtil.getConnection(true);
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,accountId);
             resultSet = preparedStatement.executeQuery();
-            while (resultSet != null) {
-                //订单需要解析
-                Order order = new Order();
-                this.extractOrder(order,resultSet);
-                list.add(order);
 
-                //订单项需要解析
+            Order order = null;
+            while (resultSet.next()) {
+                //1、订单需要解析
+                if(order == null) {
+                    order = new Order();
+                    this.extractOrder(order,resultSet);
+                    list.add(order);
+                }
+
+                String orderId = resultSet.getString("order_id");
+                if(!orderId.equals(order.getId())) {
+                    //不同的订单
+                    order = new Order();
+                    this.extractOrder(order,resultSet);
+                    list.add(order);
+                }
+                /*Order order = new Order();//订单的对象
+                this.extractOrder(order,resultSet);
+                list.add(order);*/
+                //2、订单项需要解析
                 OrderItem orderItem = this.extractOrderItem(resultSet);
                 order.orderItemList.add(orderItem);
-
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -80,12 +93,12 @@ public class BrowseOrderServlet extends HttpServlet {
 
     private OrderItem extractOrderItem(ResultSet resultSet) throws SQLException {
         OrderItem orderItem = new OrderItem();
-        orderItem.setId(resultSet.getInt("order_id"));
+        orderItem.setId(resultSet.getInt("item_id"));
         orderItem.setGoods_id(resultSet.getInt("goods_id"));
         orderItem.setGoods_name(resultSet.getString("goods_name"));
         orderItem.setGoods_introduce(resultSet.getString("goods_introduce"));
         orderItem.setGoods_num(resultSet.getInt("goods_num"));
-        orderItem.setGoods_unit(resultSet.getString("unit"));
+        orderItem.setGoods_unit(resultSet.getString("goods_unit"));
         orderItem.setGoods_price(resultSet.getInt("goods_price"));
         orderItem.setGoods_discount(resultSet.getInt("goods_discount"));
         return orderItem;
@@ -111,8 +124,7 @@ public class BrowseOrderServlet extends HttpServlet {
         //getClass()获得当前的class对象
         //getClassLoader()获取类加载器
         InputStream in = this.getClass().getClassLoader().
-                getResourceAsStream("script/" + sqlName.substring(1)
-                + ".sql");
+                getResourceAsStream("script/" + sqlName.substring(1) + ".sql");
         if(in == null) {
             throw new RuntimeException("加载sql文件出错");
         } else {
@@ -134,7 +146,6 @@ public class BrowseOrderServlet extends HttpServlet {
                 e.printStackTrace();
                 throw new RuntimeException("转化sql语句发生异常");
             }
-
         }
     }
 }

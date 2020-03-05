@@ -15,9 +15,16 @@ public class Order {
     private Integer total_money;
 
     private OrderStatus order_status;
+
+    public OrderStatus getOrder_statusDesc() {
+        return order_status;
+    }
+    //为了浏览订单使用
+    public String getOrder_status() {
+        return order_status.getDesc();
+    }
+
     public List<OrderItem> orderItemList = new ArrayList<>();//存放订单项
-
-
 
     public String getId() {
         return id;
@@ -67,9 +74,7 @@ public class Order {
         this.total_money = total_money;
     }
 
-    public OrderStatus getOrder_status() {
-        return order_status;
-    }
+
 
     public void setOrder_status(OrderStatus order_status) {
         this.order_status = order_status;
