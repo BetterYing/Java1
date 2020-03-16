@@ -9,12 +9,15 @@ public class Person {
         this.age = age;
         this.isSingle = isSingle;
     }
+
     public void eat(){
         System.out.println(name + sex + age + "正在吃饭");
     }
+
     public void sleep(){
         System.out.println(name + sex + age + "睡觉");
     }
+
     public void show(){
         System.out.println("我叫：" + name + " 年龄：" + age
             + " 性别： " + sex + " 是否单身:" + isSingle);
