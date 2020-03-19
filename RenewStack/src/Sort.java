@@ -20,6 +20,4 @@ public class Sort {
             System.out.printf(arr[i] + " ");
         }
     }
-
-
 }
