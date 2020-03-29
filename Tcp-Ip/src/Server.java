@@ -21,6 +21,5 @@ public class Server {
         System.out.println("真正关闭");
         //socket.shutdownOutput();//只关闭写端
         //socket.shutdownInput();//只关闭读端
-
     }
 }
