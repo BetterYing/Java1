@@ -97,13 +97,13 @@ public class Pinyin4jUtil {
     }
     */
 
-    public static void main(String[] args) {
-        String[] s = get("中华人民共和国");
-        System.out.println(Arrays.toString(s));
-
-
-        System.out.println(containsChinese("abc"));
-        System.out.println(containsChinese("a啊b"));
-    }
+//    public static void main(String[] args) {
+//        String[] s = get("中华人民共和国");
+//        System.out.println(Arrays.toString(s));
+//
+//
+//        System.out.println(containsChinese("abc"));
+//        System.out.println(containsChinese("a啊b"));
+//    }
 
 }
